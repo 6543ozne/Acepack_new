@@ -239,6 +239,104 @@ SMODS.Joker{ --Kallamar aka my wife
     end
 }
 
+
+
+SMODS.Joker{ --Six Shooter
+    key = "six_shooter",
+    config = {
+    extra = {
+        deathin = 5,
+        Xmult = 2.6,
+        Xmult2 = 0,
+        AcePack_dies = 0
+    }
+},
+    loc_txt = {
+        name = 'Six Shooter',
+        text = {
+            '{C:red}+60{} Mult',
+            '{C:red} x0{} Mult every 6 hands',
+            '#1# remaining'
+        },
+        unlock = {
+            'Unlocked by default.'
+        }
+    },
+    atlas = 'CustomJokers',
+    cost = 6,
+    rarity = 1,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    pos = {x = 0,y = 0},
+    soul_pos = {x=1,y=0},
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.deathin}}
+    end,
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main  then
+                card.ability.extra.deathin = math.max(0, (card.ability.extra.deathin) - 1)
+                return {
+                    extra = {
+                        Xmult = card.ability.extra.Xmult
+                        }
+                }
+        end
+        if context.individual and context.cardarea == G.play  then
+            if (context.other_card == context.scoring_hand[#context.scoring_hand] and (card.ability.extra.deathin or 0) <= 0) then
+                card.ability.extra.deathin = 6
+                
+                return {
+                    Xmult = card.ability.extra.Xmult2,
+                    message = "Bang!",
+                    sound = "AcePack_dies"
+                }
+            end
+        end
+    end
+
+}
+
+
+SMODS.Joker{ --Again?
+    key = "again",
+    config = {
+        extra = { repetitions = 3
+        }
+    },
+    loc_txt = {
+        name = 'Again?',
+        text = {
+            'Retriggers all cards three times'
+        },
+        unlock = {
+            'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 4,
+        y = 0
+    },
+    cost = 6,
+    rarity = "AcePack_generika",
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play  then
+                return {
+                    repetitions = card.ability.extra.repetitions,
+                    message = "Again!"
+                }
+        end
+    end
+    
+}
 SMODS.Joker{ --rekoj
     key = "rekoj",
     loc_txt ={
@@ -272,4 +370,40 @@ SMODS.Joker{ --rekoj
         end
     end
 
+}
+SMODS.Joker{ --Four-eyes
+    key = "foureyes",
+    config = {
+        extra = {
+            Xmult = 4
+        }
+    },
+    loc_txt = {
+        name = 'Four-eyes',
+        text = {
+            '{X:red,C:white}x4 {} Mult'
+        },
+        unlock = {
+            'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 6,
+        y = 0
+    },
+    cost = 5,
+    rarity = "AcePack_generika",
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    calculate = function(self, card, context)
+        if context.joker_main  then
+                return {
+                    Xmult = card.ability.extra.Xmult
+                }
+        end
+    end
 }
