@@ -239,8 +239,6 @@ SMODS.Joker{ --Kallamar aka my wife
     end
 }
 
-
-
 SMODS.Joker{ --Six Shooter
     key = "six_shooter",
     config = {
@@ -298,7 +296,6 @@ SMODS.Joker{ --Six Shooter
     end
 
 }
-
 
 SMODS.Joker{ --Again?
     key = "again",
