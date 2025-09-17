@@ -1,5 +1,6 @@
-![alt text](https://github.com/6543ozne/Acepack_new/blob/main/Acepack_logo.png)
-
+<p align="center">
+  <img src="https://github.com/6543ozne/Acepack_new/blob/main/Acepack_logo.png" alt="Acepack logo"/>
+</p>
 # Acepack!
 
 Okay so basicallly this is a mod im making which adds a buncha jokers, feel free to download but i havent added them all
