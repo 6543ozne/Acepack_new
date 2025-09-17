@@ -1,3 +1,4 @@
+--enjoy your stay bluddies
 --ICON
 SMODS.Atlas({
     key = "modicon",
@@ -17,6 +18,13 @@ SMODS.Atlas { --jokers
     -- Height of each sprite in 1x size
     py = 95
 }
+
+SMODS.Atlas({  --Generic booster pack
+    key = "CustomBoosters", 
+    path = "CustomBoosters.png", 
+    px = 71,
+    py = 95, 
+})
 
 --SOUNDS
 SMODS.Sound { --for 6shooter
@@ -43,8 +51,47 @@ SMODS.Rarity { --generika
     end,
 }
 
+SMODS.Booster {
+    key = 'generic_bufoon_pack',
+    loc_txt = {
+        name = "Generic Bufoon Pack",
+        text = {
+            "choose up to 1 of 3 generika joker"
+        },
+        group_name = "Generic Bufoon Pack"
+    },
+    atlas = 'CustomBoosters', pos = { x = 0, y = 0 },
+    config = {extra = 3, choose = 1 },
+    discovered = true,
+        create_card = function(self, card, i)
+        return {
+            set = "Joker",
+            rarity = "AcePack_generika",
+            area = G.pack_cards,
+            skip_materialize = true,
+            soulable = true,
+            key_append = "acepack_generic_bufoon_pack"
+        }
+    end,
+    particles = function(self)
+        -- No particles for joker packs
+    end,
+}
 
-
+SMODS.Challenge { --the dealer
+    key = 'TheDealer',
+    loc_txt = {
+        name = 'The Dealer',
+    },
+    rules = {
+        custom = {
+            { id = 'none' },
+        }
+    },
+    jokers = {
+        { id = 'j_AcePack_sixshooter', eternal=true },
+    },
+}
 
 
 --JOKERS
@@ -104,6 +151,9 @@ SMODS.Joker {   --Ace
         end
     end
 }
+
+
+
 
 SMODS.Joker { --Shipping wall
     key = "shipping_wall",
@@ -243,7 +293,7 @@ SMODS.Joker { --Kallamar aka my wife
 }
 
 SMODS.Joker { --Six Shooter
-    key = "six_shooter",
+    key = "sixshooter",
     config = {
         extra = {
             deathin = 5,
@@ -255,7 +305,7 @@ SMODS.Joker { --Six Shooter
     loc_txt = {
         name = 'Six Shooter',
         text = {
-            '{C:red}+60{} Mult',
+            '{C:red}x2.6{} Mult',
             '{C:red} x0{} Mult every 6 hands',
             '#1# remaining'
         },
