@@ -96,6 +96,8 @@ SMODS.Challenge { --the dealer
 
 --JOKERS
 
+
+
 SMODS.Joker {   --Ace
     key = "ace",
     loc_txt = { --basically all the info and description
@@ -151,8 +153,6 @@ SMODS.Joker {   --Ace
         end
     end
 }
-
-
 
 
 SMODS.Joker { --Shipping wall
@@ -544,3 +544,55 @@ SMODS.Joker { --reformed
         end
     end
 }
+
+SMODS.Joker {
+    key = "high_score",
+    loc_txt = {
+        name = 'High Score',
+        text = {
+            '{X:red,C:white}x#1#{} Mult',
+            '{C:red}+0.25{} Mult if played hand score is greater than #2#',
+            '(changes when mult is added)'  
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    config = { extra = { Xmult = 2 , h_score = 0.00}},
+    rarity = 2,
+    atlas = 'CustomJokers',
+    pos = { x = 8, y = 0 },
+    cost = 9,
+    blueprint_compat = true,
+    unlocked = true,
+    discovered = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult,card.ability.extra.h_score} }
+    end, 
+
+    calculate = function(self, card, context)
+
+        if context.final_scoring_step then
+            if SMODS.calculate_round_score() > card.ability.extra.h_score then
+                card.ability.extra.Xmult = card.ability.extra.Xmult + 0.25
+                card.ability.extra.h_score = SMODS.calculate_round_score()
+                return {
+                    message = "Upgraded!"
+                }
+            end
+        end   
+        
+        if context.joker_main then
+
+            
+            return {
+                Xmult = card.ability.extra.Xmult
+            }
+
+        end
+    end
+    
+
+    
+}
+
