@@ -2,18 +2,33 @@
 ## Acepack!
 
 <p align="center">
-  <img src="https://github.com/6543ozne/Acepack_new/blob/main/Acepack_logo.png" alt="Acepack logo"/>
+  <img width="1920" height="1080" alt="thumbnail" src="https://github.com/user-attachments/assets/503a1347-87b8-4a34-8bb4-124c44552c9d" />
+
 </p>
 
+Acepack is a bunch of BULLSHIT that i made into a mod. It hasnt been updated in like, 9 months, and has no content,  but theres more to come i promise
 
-Okay so basicallly this is a mod im making which adds a buncha jokers, feel free to download but i havent added them all
+## Content
+
+ - A whopping 9 jokers! Two being legendaries!
+ - A new rarity! "generika"
+ - References!
+ - gay squids
+ - gay goodras
+ - me 
+ - at least one ace
+
+## Requirements
+
+ - Steamodded
+ - Lovely
+
+## Credits:
+
+ - Art by me
+ - Pokemon by gamefreak
+ - Homestuck by Andrew hussie
+ - Cult of the lamb by Massive monster
+ 
 
 
-
-## Installation
-
-Download the code and put it in your balatro mod folder in
-AppData\Roaming\Balatro\Mods
-
-requires steammodded
-    
