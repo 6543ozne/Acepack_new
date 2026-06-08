@@ -8,6 +8,14 @@ SMODS.Atlas({
     atlas_table = "ASSET_ATLAS"
 })
 
+SMODS.Atlas{--the lonely
+    atlas_table = 'ANIMATION_ATLAS',
+    key = "lonely", 
+    path = "TheLonely.png",
+    px = 34,
+    py = 34,
+}
+
 SMODS.Atlas { --jokers
     -- Key for code to find it with
     key = "CustomJokers",
@@ -594,5 +602,25 @@ SMODS.Joker {
     
 
     
+}
+
+--blinds
+
+SMODS.Blind {
+    key = "The Lonely",
+    loc_txt = {
+        name = 'The Lonely',
+        text = {
+            'All Aces are debuffed'
+        },
+
+    },
+    dollars = 5,
+    mult = 2,
+    debuff = { value = 'Ace' },
+    atlas= 'lonely',
+    pos = { x = 0, y = 0 },
+    boss = { min = 1 },
+    boss_colour = HEX("ac9db4")
 }
 
