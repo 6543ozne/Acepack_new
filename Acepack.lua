@@ -51,8 +51,8 @@ SMODS.Sound { --for kallamar
 
 SMODS.Rarity { --generika
     key = "generika",
-    loc_txt = { name = "Generika" },
-    default_weight = 0.15,
+    loc_txt = { name = "Generic" },
+    default_weight = 0.05,
     badge_colour = HEX('748ca3'),
     get_weight = function(self, weight, object_type)
         return weight
@@ -64,7 +64,7 @@ SMODS.Booster {
     loc_txt = {
         name = "Generic Bufoon Pack",
         text = {
-            "choose up to 1 of 3 generika joker"
+            "choose up to 1 of 3 generic joker"
         },
         group_name = "Generic Bufoon Pack"
     },
@@ -112,9 +112,8 @@ SMODS.Joker {   --Ace
         name = 'Ace',
         text = {
             'Retrigger all played Aces.',
-            'Aces give {X:red,C:white}X3{} Mult.',
+            'Aces give {X:red,C:white}X#1#{} Mult.',
             '',
-            '{s:0.7}Its in the name.{}'
         },
         unlock = {
             'Unlocked by default.'
@@ -127,6 +126,9 @@ SMODS.Joker {   --Ace
         }
     },
 
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult,card.ability.extra.repetitions } }
+    end, 
     pos = {
         x = 2,
         y = 0
@@ -141,6 +143,8 @@ SMODS.Joker {   --Ace
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+
+
 
 
     calculate = function(self, card, context)
@@ -168,8 +172,8 @@ SMODS.Joker { --Shipping wall
     loc_txt = {
         name = 'Shipping Wall',
         text = {
-            '{X:red,C:white}X2{} Mult if poker hand contains only a heart and a diamond or a spade and a club',
-            '{C:green}:33<The purr-fect jokfur!{}'
+            '{X:red,C:white}X#1#{} Mult if poker hand contains only a heart and a diamond or a spade and a club',
+            '{C:green}:33<The purr-fect joker!{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -183,6 +187,9 @@ SMODS.Joker { --Shipping wall
     blueprint_compat = true,
     unlocked = true,
     discovered = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult} }
+    end, 
 
     calculate = function(self, card, context)
         if context.joker_main then
@@ -241,11 +248,10 @@ SMODS.Joker { --Kallamar aka my wife
     loc_txt = {
         name = 'Kallamar',
         text = {
-            '{X:red,C:white}x2{} Mult for each Joker card',
+            '{X:red,C:white}X#1#{} Mult for each Joker card',
             '',
-            '{X:red,C:white}x4{} Mult if its Ace',
+            '{X:red,C:white}X#2#{} Mult if its Ace',
             '',
-            '{s:0.7}Ah.. Ma petit chou-fleur.'
         },
         ['unlock'] = {
             'Unlocked by default.'
@@ -271,6 +277,9 @@ SMODS.Joker { --Kallamar aka my wife
         x = 1,
         y = 1
     },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult2} }
+    end, 
     in_pool = function(self, args)
         return (
                 not args
@@ -313,9 +322,9 @@ SMODS.Joker { --Six Shooter
     loc_txt = {
         name = 'Six Shooter',
         text = {
-            '{C:red}x2.6{} Mult',
-            '{C:red} x0{} Mult every 6 hands',
-            '#1# remaining'
+            '{X:red,C:white}X#1#{} Mult',
+            '{X:red,C:white} X#2#{} Mult every 6 hands',
+            '#3# remaining'
         },
         unlock = {
             'Unlocked by default.'
@@ -332,7 +341,7 @@ SMODS.Joker { --Six Shooter
     pos = { x = 0, y = 0 },
     soul_pos = { x = 1, y = 0 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.deathin } }
+        return { vars = {card.ability.extra.Xmult, card.ability.extra.Xmult2, card.ability.extra.deathin } }
     end,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main then
@@ -367,7 +376,7 @@ SMODS.Joker { --Again?
     loc_txt = {
         name = 'Again?',
         text = {
-            'Retriggers all cards three times'
+            'Retriggers all cards #1# times'
         },
         unlock = {
             'Unlocked by default.'
@@ -385,6 +394,10 @@ SMODS.Joker { --Again?
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.repetitions } }
+    end,
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play then
             return {
@@ -400,9 +413,7 @@ SMODS.Joker { --rekoj
     loc_txt = {
         name = 'Rekoj',
         text = {
-            '{X:blue,C:white}+400{} {C:blue}Chips {}',
-            '',
-            '{s:0.7}Joker spelled backwards is Rekoj, which is funny because{}'
+            '{X:blue,C:white}+#1#{} {C:blue}Chips {}'
         },
         unlock = {
             'Unlocked by default.'
@@ -420,6 +431,9 @@ SMODS.Joker { --rekoj
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
+    end,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
@@ -439,7 +453,7 @@ SMODS.Joker { --Four-eyes
     loc_txt = {
         name = 'Four-eyes',
         text = {
-            '{X:red,C:white}x4 {} Mult'
+            '{X:red,C:white}x#1#{} Mult'
         },
         unlock = {
             'Unlocked by default.'
@@ -457,6 +471,9 @@ SMODS.Joker { --Four-eyes
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult } }
+    end,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
@@ -466,45 +483,16 @@ SMODS.Joker { --Four-eyes
     end
 }
 
-SMODS.Joker { --Again?
-    key = "again",
-    config = { extra = { repetitions = 3 } },
-    loc_txt = {
-        name = 'Again?',
-        text = {
-            'Retriggers all cards three times'
-        },
-        unlock = {
-            'Unlocked by default.'
-        }
-    },
-    pos = { x = 4, y = 0 },
-    cost = 5,
-    rarity = "AcePack_generika",
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    unlocked = true,
-    discovered = true,
-    atlas = 'CustomJokers',
-    calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play then
-            return {
-                repetitions = card.ability.extra.repetitions,
-                message = "Again?"
-            }
-        end
-    end
-}
+
 
 SMODS.Joker { --reformed
     key = "reformed",
-    config = { extra = { Saneness = 1 } },
+    config = { extra = { Saneness = 1, mult_gain = 0.25 } },
     loc_txt = {
         name = 'Reformed',
         text = {
             '{X:red,C:white}x#1# Mult{}',
-            '{C:red}+0.25{} Mult for every {C:enhanced}Enhanced{} playing card destroyed'
+            '{C:red}+#2#{} Mult for every {C:enhanced}Enhanced{} playing card destroyed'
 
         },
         unlock = {
@@ -521,7 +509,7 @@ SMODS.Joker { --reformed
     discovered = true,
     atlas = 'CustomJokers',
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Saneness } }
+        return { vars = { card.ability.extra.Saneness, card.ability.extra.mult_gain } }
     end,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main then
@@ -543,7 +531,7 @@ SMODS.Joker { --reformed
                 end)() then
                 return {
                     func = function()
-                        card.ability.extra.Saneness = (card.ability.extra.Saneness) + 0.25
+                        card.ability.extra.Saneness = (card.ability.extra.Saneness) + card.ability.extra.mult_gain
                         return true
                     end,
                     message = "Cleansed"
@@ -559,14 +547,14 @@ SMODS.Joker {
         name = 'High Score',
         text = {
             '{X:red,C:white}x#1#{} Mult',
-            '{C:red}+0.25{} Mult if played hand score is greater than #2#',
+            '{C:red}+#3#{} Mult if played hand score is greater than #2#',
             '(changes when mult is added)'  
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
         }
     },
-    config = { extra = { Xmult = 2 , h_score = 0.00}},
+    config = { extra = { Xmult = 2 , h_score = 0.00, mult_gain = 0.25} },
     rarity = 2,
     atlas = 'CustomJokers',
     pos = { x = 8, y = 0 },
@@ -575,14 +563,14 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult,card.ability.extra.h_score} }
+        return { vars = { card.ability.extra.Xmult,card.ability.extra.h_score, card.ability.extra.mult_gain } }
     end, 
 
     calculate = function(self, card, context)
 
         if context.final_scoring_step then
             if SMODS.calculate_round_score() > card.ability.extra.h_score then
-                card.ability.extra.Xmult = card.ability.extra.Xmult + 0.25
+                card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.mult_gain
                 card.ability.extra.h_score = SMODS.calculate_round_score()
                 return {
                     message = "Upgraded!"
