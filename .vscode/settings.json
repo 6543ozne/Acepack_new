@@ -1,3 +1,7 @@
 {
-      "Lua.workspace.library": ["path/to/smods", "path/to/lovely/dump"]
+      "Lua.workspace.library": [
+            "path/to/smods",
+            "path/to/lovely/dump"
+      ],
+      "figura.librariesFolderPath": "C:\\Users\\Lorenzo\\AppData\\Roaming\\.minecraft\\figura\\libraries"
 }

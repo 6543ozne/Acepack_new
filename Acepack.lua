@@ -172,7 +172,7 @@ SMODS.Joker { --Shipping wall
     loc_txt = {
         name = 'Shipping Wall',
         text = {
-            '{X:red,C:white}X#1#{} Mult if poker hand contains only a heart and a diamond or a spade and a club',
+            '{X:red,C:white}X#1#{} Mult if poker hand contains only {C:hearts}hearts{} and {C:diamonds}diamonds{} or {C:spades}spades{} and {C:clubs}clubs{}',
             '{C:green}:33<The purr-fect joker!{}'
         },
         ['unlock'] = {
@@ -588,8 +588,77 @@ SMODS.Joker {
         end
     end
     
+    
+    
+}
+
+SMODS.Joker { --joker that closes the game when you trigger it
+    key = "jokerthatclosesthegamewhenyoutriggerit",
+    loc_txt = {
+        name = 'Joker that Closes the Game when you Trigger it',
+        text = {
+            "{C:attention}closes the game{}",
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    config = {extra = { Xmult = 2 , h_score = 0.00, mult_gain = 0.25} },
+    rarity = "AcePack_generika",
+    atlas = 'CustomJokers',
+    pos = { x = 5, y = 1 },
+    cost = 9,
+    blueprint_compat = true,
+    unlocked = true,
+    discovered = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult,card.ability.extra.h_score, card.ability.extra.mult_gain } }
+    end, 
+
+    calculate = function(self, card, context)   
+        if context.joker_main then
+            G.FUNCS.quit()
+
+        end
+    end
+    
 
     
+}
+
+SMODS.Joker {
+    key = "object_show_host",
+    loc_txt = {
+        name = 'Object Show Host',
+        text = {
+            "{C:attention}Destroy{} the {C:attention}lowest{} ranking ",
+            "card in the {C:attention}played hand{}"
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 5,
+    atlas = 'CustomJokers',
+    pos = { x = 6, y = 1 },
+    calculate = function(self, card, context)
+    if context.destroy_card and context.cardarea == G.play then
+        local temp_ID = 15
+        local raised_card = nil
+        for k, v in pairs(context.full_hand) do
+            if temp_ID >= v.base.id and not SMODS.has_no_rank(v) then
+                temp_ID = v.base.id
+                raised_card = v
+            end
+        end
+        if raised_card == context.destroy_card then
+            return {remove = true}
+        end
+    end
+end
+
 }
 
 --blinds
