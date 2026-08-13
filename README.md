@@ -9,13 +9,9 @@ Acepack is a bunch of BULLSHIT that i made into a mod. It hasnt been updated in 
 
 ## Content
 
- - A whopping 9 jokers! Two being legendaries!
- - A new rarity! "generika"
- - References!
- - gay squids
- - gay goodras
- - me 
- - at least one ace
+ - Multiple jokers! Two being legendaries!
+ - A new "generic" rarity! 
+ - 1 blind
 
 ## Requirements
 
