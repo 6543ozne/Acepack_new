@@ -639,7 +639,7 @@ SMODS.Joker {
         }
     },
     blueprint_compat = true,
-    rarity = 1,
+    rarity = 3,
     cost = 5,
     atlas = 'CustomJokers',
     pos = { x = 6, y = 1 },
