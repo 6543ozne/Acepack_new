@@ -1,22 +1,17 @@
 
-## Acepack!
 
 <p align="center">
-  <img width="1920" height="1080" alt="thumbnail" src="https://github.com/user-attachments/assets/503a1347-87b8-4a34-8bb4-124c44552c9d" />
+  <img alt="logo" src="https://github.com/6543ozne/Acepack_new/blob/main/Acepack_logo.png?raw=true" />
 
 </p>
 
-Acepack is a bunch of BULLSHIT that i made into a mod. It hasnt been updated in like, 9 months, and has no content,  but theres more to come i promise
+Acepack is a pseudo-vanilla-styled content mod for Balatro that contains many references to things I like. I plan to add more here, but feel free to give suggestions!
 
 ## Content
 
- - A whopping 9 jokers! Two being legendaries!
- - A new rarity! "generika"
- - References!
- - gay squids
- - gay goodras
- - me 
- - at least one ace
+ - Multiple jokers! Two being legendaries!
+ - A new "generic" rarity! 
+ - 1 blind
 
 ## Requirements
 
@@ -31,4 +26,4 @@ Acepack is a bunch of BULLSHIT that i made into a mod. It hasnt been updated in 
  - Cult of the lamb by Massive monster
  
 
-
+## contact me on discord! my username is ebicthings!
