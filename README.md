@@ -5,7 +5,7 @@
 
 </p>
 
-Acepack is a bunch of BULLSHIT that i made into a mod. It hasnt been updated in like, 9 months, and has no content,  but theres more to come i promise
+Acepack is a pseudo-vanilla-styled content mod for Balatro that contains many references to things I like. I plan to add more here, but feel free to give suggestions!
 
 ## Content
 
@@ -26,4 +26,4 @@ Acepack is a bunch of BULLSHIT that i made into a mod. It hasnt been updated in 
  - Cult of the lamb by Massive monster
  
 
-
+#contact me on discord! my username is ebicthings!
