@@ -26,4 +26,4 @@ Acepack is a pseudo-vanilla-styled content mod for Balatro that contains many re
  - Cult of the lamb by Massive monster
  
 
-#contact me on discord! my username is ebicthings!
+## contact me on discord! my username is ebicthings!
