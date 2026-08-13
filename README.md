@@ -2,7 +2,7 @@
 ## Acepack!
 
 <p align="center">
-  <img width="1920" height="1080" alt="thumbnail" src="https://github.com/user-attachments/assets/503a1347-87b8-4a34-8bb4-124c44552c9d" />
+  <img alt="logo" src="https://github.com/6543ozne/Acepack_new/blob/main/Acepack_logo.png?raw=true" />
 
 </p>
 
